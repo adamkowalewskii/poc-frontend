@@ -1,1 +1,31 @@
-<p>login works!</p>
+<div class="card-container">
+    <mat-card class="card">
+        <mat-card-title>Actions Buttons</mat-card-title>
+            <mat-card-content>
+                <mat-form-field
+                appearance="outline"
+                [formGroup]="userFormGroup"
+                class="form-field-container" >
+
+                    <input matInput formControlName="login" placeholder="Login"/>
+                </mat-form-field>
+                <mat-form-field
+                appearance="outline"
+                [formGroup]="userFormGroup"
+                class="form-field-container">
+                    <input matInput formControlName="password" placeholder="Hasło"/>
+                </mat-form-field>
+                <div class="btn-container">
+                    <button
+                        mat-flat-button
+                        class="btn-post"
+                        color="primary"
+                        [disabled]="this.userFormGroup.invalid">
+                        Zaloguj
+                    </button>
+                </div>
+            </mat-card-content>
+    </mat-card>
+</div>
+
+
