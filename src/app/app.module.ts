@@ -10,12 +10,17 @@ import {MatInputModule} from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { MainPageComponent } from './component/main-page/main-page.component';
+import { ErrorPageComponent } from './component/error-page/error-page.component';
+import { MatSnackBarModule } from '@angular/material';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
+    LoginComponent,
+    MainPageComponent,
+    ErrorPageComponent
   ],
   imports: [
     BrowserModule,
@@ -26,7 +31,8 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
     MatCardModule,
     BrowserAnimationsModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

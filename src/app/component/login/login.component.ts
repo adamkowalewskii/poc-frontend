@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { LoginService } from 'src/app/service/login.service';
+import {Router} from '@angular/router';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-login',
@@ -10,7 +12,9 @@ import { LoginService } from 'src/app/service/login.service';
 export class LoginComponent implements OnInit {
   userFormGroup: FormGroup;
   constructor(private fromBuilder: FormBuilder,
-              private loginService: LoginService) {
+              private loginService: LoginService,
+              private router: Router,
+              private snackBar: MatSnackBar) {
    }
 
   ngOnInit(): void {
@@ -22,10 +26,10 @@ export class LoginComponent implements OnInit {
 
   onSubmit(submittedForm: any): void {
     this.loginService.onSubmit(submittedForm).subscribe((user) => {
-      console.log(user)
-
+      console.log(user);
+      this.router.navigate(['success'])
     }, _error => {
-
+      this.router.navigate(['error'])
       if(_error.status === 403){
         console.log("Error 403")
       }
