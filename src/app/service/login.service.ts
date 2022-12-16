@@ -16,8 +16,13 @@ export class LoginService {
   constructor(private http: HttpClient) { }
 
   onSubmit(submittedForm: any): Observable<User>{
-    submittedForm.value["password"] = JSON.stringify(submittedForm.value["password"]);
+    //submittedForm.value["password"] = JSON.stringify(submittedForm.value["password"]);
+    console.log(submittedForm.value.password)
     return this.http.post<User>(this.ROOT_URL + '/login', JSON.stringify(submittedForm.value), this.httpOptions);
+  }
+
+  getUsers() : Observable<User[]>{
+    return this.http.get<User[]>(this.ROOT_URL + '/users/all', this.httpOptions);
   }
 
 }

@@ -1,1 +1,47 @@
 /* You can add global styles to this file, and also import other style files */
+html,
+body {
+  height: 100%;
+  background-color: #eeeeee;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.user-profile-container {
+    .mat-checkbox-layout {
+      white-space: normal !important;
+    }
+
+    .mat-checkbox-inner-container {
+      margin-top: 4px;
+    }
+
+    .mat-checkbox-checked.mat-accent .mat-checkbox-ripple .mat-ripple-element {
+      background-color: #85bb21 !important;
+    }
+
+    .mat-checkbox-checked.mat-accent .mat-checkbox-background,
+    .mat-checkbox-indeterminate.mat-accent .mat-checkbox-background {
+      background-color: #85bb21;
+    }
+
+    .mat-select-disabled .mat-select-value {
+      color: rgba(0, 0, 0, 0.88) !important;
+    }
+
+    .mat-checkbox-disabled .mat-checkbox-label {
+      color: rgba(0, 0, 0, 0.88) !important;
+    }
+
+    .mat-form-field .mat-select.mat-select-disabled .mat-select-arrow {
+      color: rgba(0, 0, 0, 0) !important;
+    }
+
+    .mat-input-element:disabled,
+    .mat-form-field-type-mat-native-select.mat-form-field-disabled
+      .mat-form-field-infix::after {
+      color: rgba(0, 0, 0, 0.88);
+    }
+  }

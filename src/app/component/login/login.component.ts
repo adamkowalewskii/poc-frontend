@@ -15,8 +15,8 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.userFormGroup = this.fromBuilder.group({
-      login: [''],
-      password: ['']
+      username: [''],
+      password: [''],
     })
   }
 
@@ -24,7 +24,14 @@ export class LoginComponent implements OnInit {
     this.loginService.onSubmit(submittedForm).subscribe((user) => {
       console.log(user)
 
+    }, _error => {
+
+      if(_error.status === 403){
+        console.log("Error 403")
+      }
     })
   }
-
+  getAll(){
+    this.loginService.getUsers().subscribe();
+  }
 }

@@ -1,13 +1,13 @@
-<div class="card-container">
+<div class="card-container user-profile-container">
     <mat-card class="card">
-        <mat-card-title>Actions Buttons</mat-card-title>
+        <mat-card-title class="title-container">Zaloguj się na swoje konto</mat-card-title>
             <mat-card-content>
                 <mat-form-field
                 appearance="outline"
                 [formGroup]="userFormGroup"
                 class="form-field-container" >
 
-                    <input matInput formControlName="login" placeholder="Login"/>
+                    <input matInput formControlName="username" placeholder="Login"/>
                 </mat-form-field>
                 <mat-form-field
                 appearance="outline"
@@ -20,7 +20,8 @@
                         mat-flat-button
                         class="btn-post"
                         color="primary"
-                        [disabled]="this.userFormGroup.invalid">
+                        [disabled]="this.userFormGroup.invalid"
+                        (click)="onSubmit(userFormGroup)">
                         Zaloguj
                     </button>
                 </div>
