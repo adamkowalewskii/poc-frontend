@@ -24,7 +24,11 @@ export class LoginService {
   }
 
   getUsers() : Observable<User[]>{
-    return this.http.get<User[]>(this.ROOT_URL + '/users/all', this.httpOptions);
+    return this.http.get<User[]>(this.ROOT_URL + '/users/all', {withCredentials:true});
+  }
+
+  logout() {
+    return this.http.put(this.ROOT_URL + '/users/logout', {withCredentials:true})
   }
 
 }
