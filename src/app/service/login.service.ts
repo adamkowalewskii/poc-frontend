@@ -28,7 +28,11 @@ export class LoginService {
   }
 
   logout() {
-    return this.http.put(this.ROOT_URL + '/users/logout', {withCredentials:true})
+    return this.http.get(this.ROOT_URL + '/users/logout', {withCredentials:true})
+  }
+
+  getRefreshToken(){
+    return this.http.get(this.ROOT_URL + '/users/refresh-token', {withCredentials:true})
   }
 
 }
