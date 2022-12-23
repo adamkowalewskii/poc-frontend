@@ -27,10 +27,10 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit(submittedForm: any): void {
-    this.loginService.onSubmit(submittedForm).subscribe((user) => {
-      console.log(user)
+    this.loginService.onSubmit(submittedForm).subscribe((token) => {
 
-      this.router.navigate(['success'], {state: {data: user.access_token}})
+      this.loginService.token = token.access_token
+      this.router.navigate(['success'], {state: {data: token.access_token}})
     }, _error => {
       this.router.navigate(['error'])
       if(_error.status === 403){

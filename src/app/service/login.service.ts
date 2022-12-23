@@ -8,14 +8,15 @@ import { Token } from '../model/token';
   providedIn: 'root'
 })
 export class LoginService {
-
+  public token = "";
   private ROOT_URL = 'http://localhost:8080';
   private httpOptions = {
-    headers: new HttpHeaders({'Content-Type': 'application/json',
-                              'Authorization' : `Bearer`})
+    headers: new HttpHeaders({'Content-Type': 'application/json'})
   }
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+
+   }
 
   onSubmit(submittedForm: any): Observable<Token>{
     //submittedForm.value["password"] = JSON.stringify(submittedForm.value["password"]);
@@ -24,15 +25,18 @@ export class LoginService {
   }
 
   getUsers() : Observable<User[]>{
-    return this.http.get<User[]>(this.ROOT_URL + '/users/all', {withCredentials:true});
+    console.log("Token", this.token)
+    this.httpOptions.headers = this.httpOptions.headers.delete("Authorization")
+    this.httpOptions.headers = this.httpOptions.headers.append("Authorization", "Bearer " + this.token)
+    return this.http.get<User[]>(this.ROOT_URL + '/users/all', this.httpOptions);
   }
 
   logout() {
-    return this.http.get(this.ROOT_URL + '/users/logout', {withCredentials:true})
+    return this.http.get(this.ROOT_URL + '/logout', {withCredentials:true})
   }
 
-  getRefreshToken(){
-    return this.http.get(this.ROOT_URL + '/users/refresh-token', {withCredentials:true})
+  getRefreshToken() : Observable<Token>{
+    return this.http.get<Token>(this.ROOT_URL + '/users/refresh-token', {withCredentials:true})
   }
 
 }
