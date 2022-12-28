@@ -33,6 +33,7 @@ export class LoginService {
   }
 
   logout() {
+    this.httpOptions.withCredentials = true
     this.httpOptions.headers = this.httpOptions.headers.delete("Authorization")
     this.httpOptions.headers = this.httpOptions.headers.append("Authorization", "Bearer " + this.token)
     return this.http.get(this.ROOT_URL + '/logout', this.httpOptions)
