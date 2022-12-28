@@ -11,7 +11,8 @@ export class LoginService {
   public token = "";
   private ROOT_URL = 'http://localhost:8080';
   private httpOptions = {
-    headers: new HttpHeaders({'Content-Type': 'application/json'})
+    headers: new HttpHeaders({'Content-Type': 'application/json'}),
+    withCredentials: true
   }
 
   constructor(private http: HttpClient) {
@@ -32,7 +33,9 @@ export class LoginService {
   }
 
   logout() {
-    return this.http.get(this.ROOT_URL + '/logout', {withCredentials:true})
+    this.httpOptions.headers = this.httpOptions.headers.delete("Authorization")
+    this.httpOptions.headers = this.httpOptions.headers.append("Authorization", "Bearer " + this.token)
+    return this.http.get(this.ROOT_URL + '/logout', this.httpOptions)
   }
 
   getRefreshToken() : Observable<Token>{
